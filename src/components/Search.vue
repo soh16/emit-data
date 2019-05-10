@@ -1,45 +1,38 @@
 <template>
-    <div class="search-container">
+    <form id="search">
 
-        <input type="text" v-model="search" placeholder="Search" />
+      <input name="query" v-model="searchQuery" placeholder="Search" />
 
-    </div>
+    </form>
 </template>
 
 <script>
 export default {
     name: 'Search',
-    props: {
-        items: {
-            type: Array,
-            default: () => [],
-            required: true
-        }
-    },
     data() {
         return {
             search: ''
         }
     },
     methods: {
-        
-        // searchList(item) {
-        //     this.$emit('update-cart', item)
-        // },
+
+        isSearch() {
+            this.$emit('this.search')
+        },
 
         searchList() {
             return this.search ? this.items.filter(item => {
             for(let key in item) {
-                if(item[key].toLowerCase().include(this.search.toLowerCase())) {
+                if(item[key].toLowerCase().match(this.search.toLowerCase())) {
                     return true
                 }
-            } 
+            }
         })
         : this.items
         }
-        
+
     }
-    
+
 }
 </script>
 

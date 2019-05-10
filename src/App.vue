@@ -1,25 +1,33 @@
 <template>
   <div id="app">
 
-    <Search @search="searchList"/>
-    
-    <user-table :items="items"/>
-  
+    <form id="search">
+
+      <input name="query" v-model="searchQuery" placeholder="Search" />
+
+    </form>
+
+    <userTable
+      :heroes="gridData"
+      :columns="gridColumns"
+      :filterKey="searchQuery"/>
+
   </div>
 </template>
 
 <script>
-import Search from '@/components/Search.vue'
 import userTable from '@/components/userTable.vue'
 
 export default {
   name: 'app',
   components: {
-    Search, userTable
+    userTable
   },
   data() {
     return {
-      items: [{
+      searchQuery: '',
+      gridColumns: ['username', 'role', 'fascias', 'services'],
+      gridData: [{
         username: 'first.last@jdplc.com',
         role: 'Edit',
         fascias: 'JDSPORTS',
@@ -66,9 +74,27 @@ export default {
         services: 'Raffle',
       }]
     }
-  }
+  },
+  computed: {
+
+        // searchList() {
+        //     return this.search ? this.items.filter(item => {
+        //     for(let key in item) {
+        //         if(item[key].toLowerCase().match(this.search.toLowerCase())) {
+        //             return true
+        //         }
+        //     }
+        // })
+        // : this.items
+        // }
+
+    }
 }
 </script>
 
 <style>
+table, tr, td, th{
+    border: 1px solid #000;
+}
+
 </style>
