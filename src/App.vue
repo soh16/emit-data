@@ -1,28 +1,74 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <Search @search="searchList"/>
+    
+    <user-table :items="items"/>
+  
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Search from '@/components/Search.vue'
+import userTable from '@/components/userTable.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Search, userTable
+  },
+  data() {
+    return {
+      items: [{
+        username: 'first.last@jdplc.com',
+        role: 'Edit',
+        fascias: 'JDSPORTS',
+        services: 'Content Editor'
+      },{
+        username: 'joe.bloggs@jdplc.com',
+        role: 'Manage',
+        fascias: 'JDSPORTS',
+        services: 'Image'
+      },{
+        username: 'ste.last@jdplc.com',
+        role: 'Admin',
+        fascias: 'JDSPORTS, JDSPORTS_IE, JDSPORTS_BE',
+        services: 'Content Editor',
+      },
+      {
+        username: 'joe.bloggs@jdplc.com',
+        role: 'Admin',
+        fascias: 'JDSPORTS, JDSPORTS_IE, JDSPORTS_BE',
+        services: 'Content Editor, Image, Email, Raffle',
+      },
+      {
+        username: 'joe.bloggs@jdplc.com',
+        role: 'Edit',
+        fascias: 'JDSPORTS',
+        services: 'Content Editor, Image, Email, Raffle',
+      },
+      {
+        username: 'ste.bloggs@jdplc.com',
+        role: 'Manage',
+        fascias: 'JDSPORTS',
+        services: 'Content Editor, Image, Email, Raffle',
+      },
+      {
+        username: 'joe.bloggs@jdplc.com',
+        role: 'Admin',
+        fascias: 'JDSPORTS',
+        services: 'Content Editor, Image, Email, Raffle',
+      },
+      {
+        username: 'DELETE.ME@jdplc.com',
+        role: 'Manage',
+        fascias: 'JDSPORTS_BE',
+        services: 'Raffle',
+      }]
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
